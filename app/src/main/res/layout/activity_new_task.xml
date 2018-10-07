@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewTaskActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:orientation="vertical">
+
+        <!-- Start = Left et End = Right -->
+        <TextView
+            android:id="@+id/text_view_tacheID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_view_tache"
+            android:textSize="18sp"
+            android:textColor="#413bd6"
+            android:paddingStart="10dp"
+            android:paddingEnd="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="8dp" />
+
+        <EditText
+            android:id="@+id/tacheID"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:hint="@string/edit_view_tache"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColorHint="#ccc9c9"
+            android:textSize="22sp"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/text_view_dateID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_view_date"
+            android:textSize="18sp"
+            android:textColor="#413bd6"
+            android:paddingStart="10dp"
+            android:paddingEnd="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="8dp" />
+
+        <EditText
+            android:id="@+id/dateID"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:hint="@string/edit_view_date"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColorHint="#ccc9c9"
+            android:textSize="22sp"
+            android:inputType="text"
+            android:focusable="false"/>
+
+        <EditText
+            android:id="@+id/timeID"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:hint="@string/edit_view_time"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColorHint="#ccc9c9"
+            android:textSize="22sp"
+            android:inputType="text"
+            android:focusable="false"/>
+
+        <TextView
+            android:id="@+id/text_view_repetitionID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_view_repetition"
+            android:textSize="18sp"
+            android:textColor="#413bd6"
+            android:paddingStart="10dp"
+            android:paddingEnd="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="8dp" />
+
+        <EditText
+            android:id="@+id/repetitionID"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:hint="@string/edit_view_repetition"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColorHint="#ccc9c9"
+            android:textSize="22sp"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/text_view_listeID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_view_liste"
+            android:textSize="18sp"
+            android:textColor="#413bd6"
+            android:paddingStart="10dp"
+            android:paddingEnd="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="8dp" />
+
+        <EditText
+            android:id="@+id/listeID"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:hint="@string/edit_view_liste"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColorHint="#ccc9c9"
+            android:textSize="22sp"
+            android:inputType="text" />
+
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
