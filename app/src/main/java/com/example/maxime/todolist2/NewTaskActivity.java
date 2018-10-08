@@ -1,7 +1,10 @@
 package com.example.maxime.todolist2;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.util.Calendar;
 
@@ -21,6 +25,20 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
+
+        /* 2t ab de string pour les listes de dialogs */
+        final String[] arrayChoixRepetition = new String[6];
+        arrayChoixRepetition[0] = "Une fois par jour";
+        arrayChoixRepetition[1] = "Une fois par jour (lundi-vendredi)";
+        arrayChoixRepetition[2] = "Une fois par semaine";
+        arrayChoixRepetition[3] = "Une fois par mois";
+        arrayChoixRepetition[4] = "Une fois par an";
+        arrayChoixRepetition[5] = "Autre...";
+
+        final String[] arrayListesTaches = new String[3];
+        arrayListesTaches[0] = "Liste A";
+        arrayListesTaches[1] = "Liste B";
+        arrayListesTaches[2] = "Liste C";
 
         EditText editTextDate = (EditText) findViewById(R.id.dateID);
         editTextDate.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +57,83 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
                 TimePicker.show(getSupportFragmentManager(), "time picker");
             }
         });
-    }
+
+        final Button buttonRepetition = (Button) findViewById(R.id.repetitionID);
+        buttonRepetition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(NewTaskActivity.this);
+                    builder.setTitle("Tout les...")
+                            .setItems(arrayChoixRepetition, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    // Delay de notification a changer selon le choix
+                                    String choixRepetition = "";
+                                    switch (which){
+                                        case 0 :
+                                            choixRepetition = arrayChoixRepetition[0];
+                                            buttonRepetition.setText(choixRepetition);
+                                            break;
+                                        case 1 :
+                                            choixRepetition = arrayChoixRepetition[1];
+                                            buttonRepetition.setText(choixRepetition);
+                                            break;
+                                        case 2 :
+                                            choixRepetition = arrayChoixRepetition[2];
+                                            buttonRepetition.setText(choixRepetition);
+                                            break;
+                                        case 3 :
+                                            choixRepetition = arrayChoixRepetition[3];
+                                            buttonRepetition.setText(choixRepetition);
+                                            break;
+                                        case 4 :
+                                            choixRepetition = arrayChoixRepetition[4];
+                                            buttonRepetition.setText(choixRepetition);
+                                            break;
+                                        case 5 :
+                                            choixRepetition = arrayChoixRepetition[5];
+                                            buttonRepetition.setText(choixRepetition);
+                                            break;
+                                    }
+                                }
+                            });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+
+        final Button buttonListesTaches = (Button) findViewById(R.id.listeID);
+        buttonListesTaches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(NewTaskActivity.this);
+                builder.setTitle("Quelle liste choisir?")
+                        .setItems(arrayListesTaches, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                // Delay de notification a changer selon le choix
+                                String choixListesTaches = "";
+                                switch (which){
+                                    case 0 :
+                                        choixListesTaches = arrayListesTaches[0];
+                                        buttonListesTaches.setText(choixListesTaches);
+                                        break;
+                                    case 1 :
+                                        choixListesTaches = arrayListesTaches[1];
+                                        buttonListesTaches.setText(choixListesTaches);
+                                        break;
+                                    case 2 :
+                                        choixListesTaches = arrayListesTaches[2];
+                                        buttonListesTaches.setText(choixListesTaches);
+                                        break;
+                                }
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+}
 
 
     @Override

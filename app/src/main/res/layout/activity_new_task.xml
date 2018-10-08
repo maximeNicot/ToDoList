@@ -84,7 +84,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="8dp" />
 
-        <EditText
+        <Button
             android:id="@+id/repetitionID"
             android:layout_width="250dp"
             android:layout_height="50dp"
@@ -107,7 +107,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="8dp" />
 
-        <EditText
+        <Button
             android:id="@+id/listeID"
             android:layout_width="250dp"
             android:layout_height="50dp"
