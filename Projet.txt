@@ -1,0 +1,68 @@
+﻿Groupe de 3-4
+
+
+Cours découpé en 2 parties.
+ Partie ludique : Unity, jeu, petit devoir de prog en TD. 
+
+
+Plus gros projet : 
+Application android "basique".
+	
+- Application de type TODO list. 
+		
+- Activité affichages des taches
+		
+- Creer une tache (modifier, Supprimer, ..) 
+		
+- Système de rappel
+		
+- Deadline pour les taches
+		
+- Travail à plusieurs -> assignées à des personnes / partage -> Service centralisé
+		
+- Statut de taches, avancement etc..
+		
+- Priorité
+		
+- Widget ecran d'acceuil affichant une selection de taches 
+		
+- Partage par bluetooth
+		
+- Mise en place d'un service centralisé
+		
+- Authentification Facebook
+		
+- Base de données pour stockage local
+		
+- Exposition des données par un content provider (lecture/ecriture) 
+		
+_
+
+RENDU : Jusqu'au examen
+
+
+
+
+
+
+Tache : titre, statut, *priorité, *description, *lieu, *date, *frequence, *deadline, thème (maison, travail... pour l'affichage)
+	stockée en BDD locale
+
+
+Page :
+	- Accueil : list de tache, barre avec bouton de cre/sup...
+	- Détail de tache quand cliqué, bouton de modification
+	- page de modif, création ( formulaire )
+
+A voir : 
+- widget
+- bluetooth
+- authentification FB Pk?
+- content provider?
+
+Idée : une 4eme page pour en avoir une chacun a faire?
+	1ere étage : créer l'objets Tache et les 3 pages fonctionnelles avec une liste de tache random en BDD locale
+			lier les boutons avec les changements de pages 
+	En vrai ça a l'aire simple et court donc ça doit se faire vite pcq android gère tous les trucs "a voir" normalement
+
+	pourquoi pas une page planning, avec un calendrier jour/semaine/mois ou on peut ajouter des tache depuis une date 
