@@ -18,15 +18,24 @@
     <string name="title_activity_settings">Settings</string>
     <string name="newTaskSubmit">Envoyer</string>
 
-    <!-- Example General settings -->
+    <!-- General settings -->
+
     <string name="pref_general_title">Général</string>
-    <string name="pref_sync">Param 1</string>
-    <string name="pref_sync_summ">Summary 1</string>
-    <string name="pref_syncConnectionType">Param 2 </string>
+    <string name="pref_sync">Vibration</string>
+    <string name="pref_sync_summ">Activée</string>
+    <string name="pref_syncConnectionType">Param 1</string>
     <string name="pref_syncConnectionTypes_default">Default value Param 2</string>
     <string name="pref_notifications_title">Notifications</string>
-    <string name="pref_sync_summ_3">summary3</string>
-    <string name="pref_sync_param3">Param3</string>
+    <string name="pref_sync_sonnerie">Sonnerie</string>
+    <string name="pref_sync_son">Son</string>
+    <string name="pref_sync_delais">Notifications de la tâche</string>
+    <string name="pref_sync_sum_delais">A heure définie</string>
+    <string name="pref_sync_google_facebook_title">Synchronisation avec Google Facebook</string>
+    <string name="pref_sync_google">Compte Google</string>
+    <string name="pref_sync_sum_google">Non defini</string>
+    <string name="pref_sync_facebook">Compte Facebook</string>
+    <string name="pref_sync_sum_facebook">Non defini</string>
+
 
     <string-array name="pref_example_list_titles">
         <item>Always</item>
