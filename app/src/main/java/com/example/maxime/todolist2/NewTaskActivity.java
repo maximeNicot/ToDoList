@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,18 +28,14 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         setContentView(R.layout.activity_new_task);
 
         /* 2t ab de string pour les listes de dialogs */
-        final String[] arrayChoixRepetition = new String[6];
-        arrayChoixRepetition[0] = "Une fois par jour";
-        arrayChoixRepetition[1] = "Une fois par jour (lundi-vendredi)";
-        arrayChoixRepetition[2] = "Une fois par semaine";
-        arrayChoixRepetition[3] = "Une fois par mois";
-        arrayChoixRepetition[4] = "Une fois par an";
-        arrayChoixRepetition[5] = "Autre...";
 
-        final String[] arrayListesTaches = new String[3];
-        arrayListesTaches[0] = "Liste A";
-        arrayListesTaches[1] = "Liste B";
-        arrayListesTaches[2] = "Liste C";
+        final String[] arrayChoixRepetition;
+        Resources res = getResources();
+        arrayChoixRepetition = res.getStringArray(R.array.arrayChoixRepetition); // on prends l'array dans arrays.xml
+
+
+        final String[] arrayListesTaches;
+        arrayListesTaches = res.getStringArray(R.array.arrayListesTaches);
 
         EditText editTextDate = (EditText) findViewById(R.id.dateID);
         editTextDate.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +128,14 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
                         });
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
+            }
+        });
+
+        final Button buttonEnvoyer = (Button) findViewById(R.id.newTaskSubmitID);
+        buttonEnvoyer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Creer une task et la mettre dans une TaskList, BDD?*/
             }
         });
 }
