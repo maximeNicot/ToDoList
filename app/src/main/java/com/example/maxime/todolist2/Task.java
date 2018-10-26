@@ -1,39 +1,82 @@
 package com.example.maxime.todolist2;
 
 public class Task {
+    private long id;
     private String nom;
-    private String dateAnnee;
-    private String dateMois;
-    private String dateJour;
-    private String dateHeure;
-    private String dateMinute;
-    private boolean effectue; // vrai = la tache est fini
+    private String date;
     private String repetition;
+    private boolean effectue; // vrai = la tache est fini
+
 
 
     public Task(){
+        id = 0;
         nom = "";
-        dateAnnee = "";
-        dateMois = "";
-        dateJour = "";
-        dateHeure = "";
-        dateMinute = "";
-        effectue = false;
+        date = "";
         repetition = "";
+        effectue = false;
+
     }
 
-    public Task(String nom, String dateAnnee, String dateMois, String dateJour, String dateHeure, String dateMinute, String repetition){
+    public Task(String nom){
+        //this.id = 0;
         this.nom = nom;
-        this.dateAnnee = dateAnnee;
-        this.dateMois = dateMois;
-        this.dateJour = dateJour;
-        this.dateHeure = dateHeure;
-        this.dateMinute = dateMinute;
+        this.date = "";
+        this.repetition = "";
         effectue = false;
+
+    }
+    public Task(String id ,String nom, String date, String repetition){
+        this.id = 0;
+        this.nom = nom;
+        this.date = date;
         this.repetition = repetition;
+        effectue = false;
+
     }
 
     public void taskTerminer(){
         effectue = true;
+    }
+
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getRepetition() {
+        return repetition;
+    }
+
+    public void setRepetition(String repetition) {
+        this.repetition = repetition;
+    }
+
+    public boolean isEffectue() {
+        return effectue;
+    }
+
+    public void setEffectue(boolean effectue) {
+        this.effectue = effectue;
     }
 }

@@ -6,10 +6,12 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.provider.SyncStateContract;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -19,15 +21,15 @@ import android.widget.TimePicker;
 import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 public class NewTaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener {
-
+    final TaskDAO datasource = new TaskDAO(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
-
-        /* 2t ab de string pour les listes de dialogs */
 
         final String[] arrayChoixRepetition;
         Resources res = getResources();
@@ -50,6 +52,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         editTextTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 DialogFragment TimePicker = new DialogTime();
                 TimePicker.show(getSupportFragmentManager(), "time picker");
             }
@@ -130,14 +133,36 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
                 alertDialog.show();
             }
         });
+        /**********BDD***************/
+
+
+        datasource.open();
+
+        //Task firstTask = datasource.getFirstTask();
+
+        /*List<Task> values = null;
+        values.add(datasource.getFirstTask());*/
+
+        TextView textViewDeuxID = (TextView) findViewById(R.id.deuxID);
+
+        //textViewDeuxID.setText(datasource.getFirstTask().getNom());
+
+        /*final ArrayAdapter<Task> adapter = new ArrayAdapter<Task>(this,
+                android.R.layout.simple_list_item_1, values);*/
 
         final Button buttonEnvoyer = (Button) findViewById(R.id.newTaskSubmitID);
         buttonEnvoyer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Creer une task et la mettre dans une TaskList, BDD?*/
+                Task newTask = datasource.createTask("papyrus BDD");
+               /* adapter.add(newTask);
+                adapter.notifyDataSetChanged();*/
             }
         });
+
+
+
+        /************!BDD*************/
 }
 
 

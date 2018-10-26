@@ -135,7 +135,32 @@
                 android:textColorHint="#ccc9c9"
                 android:textSize="22sp" />
 
+            <EditText
+                android:id="@+id/unID"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:focusable="false"
+                android:hint="AAAAA"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColorHint="#ccc9c9"
+                android:textSize="22sp" />
+            <TextView
+                android:id="@+id/deuxID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="8dp"
+                android:paddingStart="10dp"
+                android:text="AAA"
+                android:textColor="#413bd6"
+                android:textSize="18sp" />
+
+
         </LinearLayout>
+
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
