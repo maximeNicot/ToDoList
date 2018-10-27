@@ -1,10 +1,8 @@
-package com.example.maxime.todolist2;
+package com.example.MAGP.todolist;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
-import android.util.Log;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
 

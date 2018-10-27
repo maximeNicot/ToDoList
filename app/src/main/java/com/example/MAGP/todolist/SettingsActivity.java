@@ -1,8 +1,9 @@
-package com.example.maxime.todolist2;
+package com.example.MAGP.todolist;
 
+import android.preference.EditTextPreference;
 import android.preference.PreferenceActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 
 public class SettingsActivity extends PreferenceActivity {
 
@@ -14,5 +15,7 @@ public class SettingsActivity extends PreferenceActivity {
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new SettingsFragment())
                 .commit();
+
+
     }
 }

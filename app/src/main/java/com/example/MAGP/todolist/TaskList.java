@@ -1,4 +1,4 @@
-package com.example.maxime.todolist2;
+package com.example.MAGP.todolist;
 
 import java.util.ArrayList;
 import java.util.List;

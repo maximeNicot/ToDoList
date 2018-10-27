@@ -140,6 +140,17 @@
                 android:textColorHint="#ccc9c9"
                 android:textSize="22sp" />
 
+            <Button
+                android:id="@+id/lancerGoogleActivityID"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="Demarrer Google"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColorHint="#ccc9c9"
+                android:textSize="22sp" />
+
 
         </LinearLayout>
 

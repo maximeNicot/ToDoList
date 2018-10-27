@@ -47,7 +47,7 @@
         <EditTextPreference
             android:dependency="pref_sync"
             android:defaultValue="true"
-            android:key="pref_syncConnectionType"
+            android:key="googleKey"
             android:summary="@string/pref_sync_sum_google"
             android:title="@string/pref_sync_google" />
         <EditTextPreference

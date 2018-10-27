@@ -1,17 +1,15 @@
-package com.example.maxime.todolist2;
+package com.example.MAGP.todolist;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.provider.SyncStateContract;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -19,10 +17,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.List;
 
 public class NewTaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener {
     private TaskDAO datasource;
@@ -157,7 +153,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
 
 
 
-        /************BDD*************/
+        /************!BDD*************/
 
 /*      final TaskDAO taskDAO = new TaskDAO(NewTaskActivity.this);
         taskDAO.open();
@@ -191,8 +187,24 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
 
         taskDAO.close();
         /************!BDD*************/
+
+        /**Bouton pour lancer l'activité google**/
+        Button bGoogle = (Button) findViewById(R.id.lancerGoogleActivityID);
+        bGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newGoogleSignInActivity(view);
+            }
+        });
+
+
 }
 
+
+    public void newGoogleSignInActivity(View view){
+        Intent intent = new Intent(this,  GoogleSignInActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {

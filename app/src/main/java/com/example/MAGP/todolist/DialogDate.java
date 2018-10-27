@@ -1,4 +1,4 @@
-package com.example.maxime.todolist2;
+package com.example.MAGP.todolist;
 
 
 import android.app.DatePickerDialog;

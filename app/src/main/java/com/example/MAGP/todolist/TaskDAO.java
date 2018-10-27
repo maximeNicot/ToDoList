@@ -1,13 +1,10 @@
-package com.example.maxime.todolist2;
+package com.example.MAGP.todolist;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TaskDAO  {
 
