@@ -17,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.text.DateFormat;
@@ -24,7 +25,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class NewTaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener {
-    final TaskDAO datasource = new TaskDAO(this);
+    private TaskDAO datasource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,7 +40,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         final String[] arrayListesTaches;
         arrayListesTaches = res.getStringArray(R.array.arrayListesTaches);
 
-        EditText editTextDate = (EditText) findViewById(R.id.dateID);
+        final EditText editTextDate = (EditText) findViewById(R.id.dateID);
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +49,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
             }
         });
 
-        EditText editTextTime = (EditText) findViewById(R.id.timeID);
+        final EditText editTextTime = (EditText) findViewById(R.id.timeID);
         editTextTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,8 +59,8 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
             }
         });
 
-        final Button buttonRepetition = (Button) findViewById(R.id.repetitionID);
-        buttonRepetition.setOnClickListener(new View.OnClickListener() {
+        final EditText editTextRepetition = (EditText) findViewById(R.id.repetitionID);
+        editTextRepetition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(NewTaskActivity.this);
@@ -72,27 +73,27 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
                                     switch (which){
                                         case 0 :
                                             choixRepetition = arrayChoixRepetition[0];
-                                            buttonRepetition.setText(choixRepetition);
+                                            editTextRepetition.setText(choixRepetition);
                                             break;
                                         case 1 :
                                             choixRepetition = arrayChoixRepetition[1];
-                                            buttonRepetition.setText(choixRepetition);
+                                            editTextRepetition.setText(choixRepetition);
                                             break;
                                         case 2 :
                                             choixRepetition = arrayChoixRepetition[2];
-                                            buttonRepetition.setText(choixRepetition);
+                                            editTextRepetition.setText(choixRepetition);
                                             break;
                                         case 3 :
                                             choixRepetition = arrayChoixRepetition[3];
-                                            buttonRepetition.setText(choixRepetition);
+                                            editTextRepetition.setText(choixRepetition);
                                             break;
                                         case 4 :
                                             choixRepetition = arrayChoixRepetition[4];
-                                            buttonRepetition.setText(choixRepetition);
+                                            editTextRepetition.setText(choixRepetition);
                                             break;
                                         case 5 :
                                             choixRepetition = arrayChoixRepetition[5];
-                                            buttonRepetition.setText(choixRepetition);
+                                            editTextRepetition.setText(choixRepetition);
                                             break;
                                     }
                                 }
@@ -102,8 +103,8 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
             }
         });
 
-        final Button buttonListesTaches = (Button) findViewById(R.id.listeID);
-        buttonListesTaches.setOnClickListener(new View.OnClickListener() {
+        final EditText editTextListesTaches = (EditText) findViewById(R.id.listeID);
+        editTextListesTaches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(NewTaskActivity.this);
@@ -116,15 +117,15 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
                                 switch (which){
                                     case 0 :
                                         choixListesTaches = arrayListesTaches[0];
-                                        buttonListesTaches.setText(choixListesTaches);
+                                        editTextListesTaches.setText(choixListesTaches);
                                         break;
                                     case 1 :
                                         choixListesTaches = arrayListesTaches[1];
-                                        buttonListesTaches.setText(choixListesTaches);
+                                        editTextListesTaches.setText(choixListesTaches);
                                         break;
                                     case 2 :
                                         choixListesTaches = arrayListesTaches[2];
-                                        buttonListesTaches.setText(choixListesTaches);
+                                        editTextListesTaches.setText(choixListesTaches);
                                         break;
                                 }
                             }
@@ -133,35 +134,62 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
                 alertDialog.show();
             }
         });
-        /**********BDD***************/
 
 
-        datasource.open();
-
-        //Task firstTask = datasource.getFirstTask();
-
-        /*List<Task> values = null;
-        values.add(datasource.getFirstTask());*/
-
-        TextView textViewDeuxID = (TextView) findViewById(R.id.deuxID);
-
-        //textViewDeuxID.setText(datasource.getFirstTask().getNom());
-
-        /*final ArrayAdapter<Task> adapter = new ArrayAdapter<Task>(this,
-                android.R.layout.simple_list_item_1, values);*/
 
         final Button buttonEnvoyer = (Button) findViewById(R.id.newTaskSubmitID);
         buttonEnvoyer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Task newTask = datasource.createTask("papyrus BDD");
-               /* adapter.add(newTask);
-                adapter.notifyDataSetChanged();*/
+                EditText editTextNomTAche = (EditText) findViewById(R.id.tache_nomID);
+                /**********BDD***************/
+                final TaskDAO taskDAO = new TaskDAO(NewTaskActivity.this);
+                taskDAO.open();
+                String dateEtHeure = editTextDate.getText().toString();
+                dateEtHeure = dateEtHeure + " " + editTextTime.getText().toString();
+
+                Task taskEnregistrer = new Task(editTextNomTAche.getText().toString(),dateEtHeure,editTextRepetition.getText().toString(),"effectue");
+                taskDAO.insertTask(taskEnregistrer);
+                Task taskFromBdd = taskDAO.getTaskWithNom(taskEnregistrer.getNom());
+                Toast.makeText(NewTaskActivity.this, taskFromBdd.toString(), Toast.LENGTH_LONG).show();
             }
         });
 
 
 
+        /************BDD*************/
+
+/*      final TaskDAO taskDAO = new TaskDAO(NewTaskActivity.this);
+        taskDAO.open();
+        Task task = new Task("Nom", "DATEUH", "repet","effectue");
+        taskDAO.insertTask(task);
+
+        //Pour verifier si lajout a bien été fait
+        Task taskFromBdd = taskDAO.getTaskWithNom(task.getNom());
+
+        if(taskFromBdd != null){
+            Toast.makeText(this, taskFromBdd.toString(), Toast.LENGTH_LONG).show();
+            taskFromBdd.setNom("NOUVEAU NOM");
+            taskDAO.updateTask(taskFromBdd.getId(), taskFromBdd);
+        }
+        //on supprime
+        taskFromBdd = taskDAO.getTaskWithNom("NOUVEAU NOM");
+        if(taskFromBdd != null){
+            Toast.makeText(this, taskFromBdd.toString(), Toast.LENGTH_LONG).show();
+
+            taskDAO.removeTask(taskFromBdd.getId());
+
+        }
+
+        taskFromBdd = taskDAO.getTaskWithNom("NOUVEAU NOM");
+        if(taskFromBdd == null){
+            Toast.makeText(this, "Ce task n'existe pas dans la BDD", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this, "Ce task existe dans la BDD", Toast.LENGTH_LONG).show();
+        }
+
+        taskDAO.close();
         /************!BDD*************/
 }
 

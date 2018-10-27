@@ -1,51 +1,68 @@
 package com.example.maxime.todolist2;
 
 public class Task {
-    private long id;
+    private int id;
     private String nom;
     private String date;
     private String repetition;
-    private boolean effectue; // vrai = la tache est fini
+    private String effectue; // vrai = la tache est fini
 
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", date='" + date + '\'' +
+                ", repetition='" + repetition + '\'' +
+                ", effectue='" + effectue + '\'' +
+                '}';
+    }
 
     public Task(){
-        id = 0;
         nom = "";
         date = "";
         repetition = "";
-        effectue = false;
+        effectue = "";
 
     }
 
-    public Task(String nom){
+   /* public Task(String nom){
         //this.id = 0;
         this.nom = nom;
         this.date = "";
         this.repetition = "";
         effectue = false;
 
-    }
-    public Task(String id ,String nom, String date, String repetition){
-        this.id = 0;
+    }*/
+    public Task(String nom, String date, String repetition, String effectue){
         this.nom = nom;
         this.date = date;
         this.repetition = repetition;
-        effectue = false;
+        this.effectue = effectue ;
 
     }
 
-    public void taskTerminer(){
+   /* public void taskTerminer(){
         effectue = true;
-    }
+    }*/
 
 
+    /*public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", date='" + date + '\'' +
+                ", repetition='" + repetition + '\'' +
+                ", effectue=" + effectue +
+                '}';
+    }*/
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getNom() {
@@ -72,11 +89,11 @@ public class Task {
         this.repetition = repetition;
     }
 
-    public boolean isEffectue() {
+    public String getEffectue() {
         return effectue;
     }
 
-    public void setEffectue(boolean effectue) {
+    public void setEffectue(String effectue) {
         this.effectue = effectue;
     }
 }
