@@ -1,1 +1,55 @@
-{"web":{"client_id":"941080329672-o0a2udrugcpja0f8mc2cdcej74bu2s1h.apps.googleusercontent.com","project_id":"todolist-220717","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://www.googleapis.com/oauth2/v3/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"-DHHeM_eNWbP4_kKkz2We7_0"}}
+{
+  "project_info": {
+    "project_number": "139758118253",
+    "firebase_url": "https://todolist3-17b14.firebaseio.com",
+    "project_id": "todolist3-17b14",
+    "storage_bucket": "todolist3-17b14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139758118253:android:f43e23608aff3088",
+        "android_client_info": {
+          "package_name": "com.example.magpm.todolist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139758118253-5tmncorgj9kidrc7gu93jnl2mq93oimd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.magpm.todolist",
+            "certificate_hash": "977b4faa4d81420c0b03fd8e7e18af433b336450"
+          }
+        },
+        {
+          "client_id": "139758118253-govj54rrebppgpcl1141admte2omdohd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1Iw60DRZZKkSK29EaIQVy41DThNuC5sU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139758118253-govj54rrebppgpcl1141admte2omdohd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

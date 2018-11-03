@@ -1,4 +1,4 @@
-package com.example.MAGP.todolist;
+package com.example.magpm.todolist.model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

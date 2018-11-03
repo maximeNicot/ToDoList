@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.magpm.todolist.controleur.GoogleSignInActivity">
+    tools:context="com.example.magpm.todolist.controleur.GoogleAccountActivity">
 
-
-
-        <com.google.android.gms.common.SignInButton
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/googleBtn"></com.google.android.gms.common.SignInButton>
+            android:text = "Logout"
+            android:id="@+id/logoutGoogle"
+            />
+
+
 
 </android.support.constraint.ConstraintLayout>

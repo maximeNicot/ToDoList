@@ -1,4 +1,4 @@
-package com.example.MAGP.todolist;
+package com.example.magpm.todolist.model;
 
 public class Task {
     private int id;
@@ -27,14 +27,6 @@ public class Task {
 
     }
 
-   /* public Task(String nom){
-        //this.id = 0;
-        this.nom = nom;
-        this.date = "";
-        this.repetition = "";
-        effectue = false;
-
-    }*/
     public Task(String nom, String date, String repetition, String effectue){
         this.nom = nom;
         this.date = date;
@@ -42,21 +34,6 @@ public class Task {
         this.effectue = effectue ;
 
     }
-
-   /* public void taskTerminer(){
-        effectue = true;
-    }*/
-
-
-    /*public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", date='" + date + '\'' +
-                ", repetition='" + repetition + '\'' +
-                ", effectue=" + effectue +
-                '}';
-    }*/
 
     public int getId() {
         return id;

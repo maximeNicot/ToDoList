@@ -1,4 +1,4 @@
-package com.example.MAGP.todolist;
+package com.example.magpm.todolist.model;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,9 +7,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 public class TaskDAO  {
-
-    /*private String[] allColumns = {SQLiteHelper.TASK_COL_ID,SQLiteHelper.TASK_COL_NOM ,SQLiteHelper.TASK_COL_DATE,
-            SQLiteHelper.TASK_COL_REPETITION, SQLiteHelper.TASK_COL_EFFECTUE};*/
 
     public static final String TASK_TABLE_NAME = "Task_table";
     private static final int VERSION_BDD  = 1;

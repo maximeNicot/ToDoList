@@ -1,9 +1,9 @@
-package com.example.MAGP.todolist;
+package com.example.magpm.todolist.controleur;
 
-import android.preference.EditTextPreference;
 import android.preference.PreferenceActivity;
 import android.os.Bundle;
-import android.widget.EditText;
+
+import com.example.magpm.todolist.R;
 
 public class SettingsActivity extends PreferenceActivity {
 

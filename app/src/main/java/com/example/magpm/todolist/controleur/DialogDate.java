@@ -1,4 +1,4 @@
-package com.example.MAGP.todolist;
+package com.example.magpm.todolist.controleur;
 
 
 import android.app.DatePickerDialog;

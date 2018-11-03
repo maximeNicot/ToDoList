@@ -1,4 +1,4 @@
-package com.example.MAGP.todolist;
+package com.example.magpm.todolist.controleur;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -16,6 +16,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.example.magpm.todolist.R;
+import com.example.magpm.todolist.model.Task;
+import com.example.magpm.todolist.model.TaskDAO;
 
 import java.text.DateFormat;
 import java.util.Calendar;

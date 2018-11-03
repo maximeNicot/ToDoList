@@ -1,4 +1,6 @@
-package com.example.MAGP.todolist;
+package com.example.magpm.todolist.model;
+
+import com.example.magpm.todolist.model.Task;
 
 import java.util.ArrayList;
 import java.util.List;
