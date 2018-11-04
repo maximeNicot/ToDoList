@@ -15,6 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.magpm.todolist.R;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -34,23 +41,51 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class GoogleSignInActivity extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
+    // Pour google
+    private static final String TAG = "GOOGLE_SIGN_IN_ACTIVITY";
     private SignInButton mGoogleBtn;
     private static final int RC_SIGN_IN = 1;
     private GoogleApiClient mGoogleApiClient;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private static final String TAG = "GOOGLE_SIGN_IN_ACTIVITY";
-
+    // Pour facebook
+    private CallbackManager mCallbackManager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_sign_in);
+    //Facebook
+
+        mCallbackManager = CallbackManager.Factory.create();
+
+        LoginButton mFacebookSignInButton = (LoginButton) findViewById(R.id.login_facebook_button);
+        mFacebookSignInButton.setReadPermissions("email", "public_profile", "user_birthday", "user_friends");
+        mFacebookSignInButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        Log.d(TAG, "facebook:onSuccess:" + loginResult);
+                        firebaseAuthWithFacebook(loginResult.getAccessToken());
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Log.d(TAG, "facebook:onCancel");
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        Log.d(TAG, "facebook:onError", error);
+                    }
+                });
+    //Facebook!
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -91,6 +126,12 @@ public class GoogleSignInActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if(currentUser != null){
+            updateUI();
+        }
+
         mAuth.addAuthStateListener(mAuthListener);
     }
 
@@ -112,13 +153,42 @@ public class GoogleSignInActivity extends AppCompatActivity {
                 firebaseAuthWithGoogle(account);
             }
             else {
-
+                Log.e(TAG, "Google Sign In failed.");
             }
         }
+
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+    private void updateUI(){
+
+        //startActivity(new Intent(GoogleSignInActivity.this, GoogleAccountActivity.class));
+        finish();
+    }
+
+    private void firebaseAuthWithFacebook(AccessToken token) {
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "signInWithCredential", task.getException());
+                            Toast.makeText(GoogleSignInActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI();
+
+                        }
+                    }
+                });
+
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
-
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
