@@ -5,7 +5,7 @@ public class Task {
     private String nom;
     private String date;
     private String repetition;
-    private String effectue; // vrai = la tache est fini
+    private String effectue;
 
 
     @Override
@@ -33,6 +33,13 @@ public class Task {
         this.repetition = repetition;
         this.effectue = effectue ;
 
+    }
+    public Task(String nom, String date, String repetition, String effectue, int id){
+        this.nom = nom;
+        this.date = date;
+        this.repetition = repetition;
+        this.effectue = effectue ;
+        this.id = id;
     }
 
     public int getId() {

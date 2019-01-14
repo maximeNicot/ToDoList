@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">ToDoList2</string>
     <!-- Facebook -->
-    <string name="facebook_app_id">185965118952341</string> <string name="fb_login_protocol_scheme">fb185965118952341</string>
+    <string name="facebook_app_id">185965118952341</string>
+    <string name="fb_login_protocol_scheme">fb185965118952341</string>
 
 
     <!-- settings depuis le main -->
@@ -10,18 +11,23 @@
 
     <!-- NewTaskActivity string -->
     <string name="title_activity_new_task">NewTaskTitle</string>
-    <string name="text_view_tache">Que faut-il faire?</string>
+    <string name="text_view_tache">Nom de la tâche</string>
     <string name="edit_view_tache">Entrez tâche ici</string>
     <string name="text_view_date">Date limite</string>
-    <string name="edit_view_date">Date a rentrer</string>
-    <string name="edit_view_time">Rentrer heure</string>
+    <string name="edit_view_date">Date à rentrer</string>
+    <string name="edit_view_time">Heure à rentrer</string>
     <string name="text_view_repetition">Répétition</string>
     <string name="edit_view_repetition">Tout les X temps</string>
     <string name="text_view_liste">Ajouter à la liste</string>
     <string name="edit_view_liste">Par defaut</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="newTaskSubmit">Envoyer</string>
+    <string name="newTaskSubmit">Ajouter</string>
+    <string name="supprimerButton">Supprimer</string>
+    <string name="modifierButton">Modifier</string>
 
+    <!-- item -->
+    <string name="text">text</string>
+    <string name="sendEmailButton">Partager la tâche</string>
     <string name="hello">@string/hello</string>
     <!-- General settings -->
 
@@ -40,5 +46,7 @@
     <string name="pref_sync_sum_google">Non defini</string>
     <string name="pref_sync_facebook">Compte Facebook</string>
     <string name="pref_sync_sum_facebook">Non defini</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>

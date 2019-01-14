@@ -3,8 +3,12 @@ package com.example.magpm.todolist.model;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TaskDAO  {
 
@@ -15,7 +19,7 @@ public class TaskDAO  {
     private static final int NUM_TASK_COL_ID = 0;
     private static final String TASK_COL_NOM = "nom";
     private static final int NUM_TASK_COL_NOM = 1;
-    private static final String TASK_COL_DATE = "date"; /*("YYYY-MM-DD HH:MM:SS.SSS").*/
+    private static final String TASK_COL_DATE = "date";
     private static final int NUM_TASK_COL_DATE = 2;
     private static final String TASK_COL_REPETITION = "repetition";
     private static final int NUM_TASK_COL_REPETITION = 3;
@@ -52,11 +56,13 @@ public class TaskDAO  {
 
    public int updateTask(int id, Task task){
        ContentValues values = new ContentValues();
+       String strFilter = "_id=" + id;
+
        values.put(TASK_COL_NOM, task.getNom());
        values.put(TASK_COL_DATE, task.getDate());
        values.put(TASK_COL_REPETITION, task.getRepetition());
        values.put(TASK_COL_EFFECTUE, task.getEffectue());
-       return database.update(TASK_TABLE_NAME, values,TASK_COL_ID + " = " + id, null);
+       return database.update(TASK_TABLE_NAME, values,TASK_COL_ID + "=" + id, null);
    }
 
    public int removeTask(int id){
@@ -69,6 +75,57 @@ public class TaskDAO  {
 
         return cursorToTask(c);
    }
+
+    public Task getTaskWithID(String ID){
+        Cursor c = database.query(TASK_TABLE_NAME, new String[] {TASK_COL_ID, TASK_COL_NOM, TASK_COL_DATE, TASK_COL_REPETITION, TASK_COL_EFFECTUE},
+                TASK_COL_ID + " LIKE \"" + ID + "\"", null,null,null,null);
+
+        return cursorToTask(c);
+    }
+
+    public ArrayList getAllID() {
+        String selectQuery = "SELECT  * FROM " + TASK_TABLE_NAME;
+
+        ArrayList list = new ArrayList<>();
+
+            Cursor cursor = database.rawQuery(selectQuery, null);
+            try {
+                if (cursor.moveToFirst()) {
+                    do {
+                        Task task = new Task();
+                        task.setId(Integer.parseInt(cursor.getString(0)));
+                        list.add(task);
+                    } while (cursor.moveToNext());
+                }
+
+            } finally {
+                try {
+                    cursor.close();
+                } catch (Exception ignore) {
+                }
+            }
+         return list;
+    }
+
+    public long getTaskCount() {
+        long count = DatabaseUtils.queryNumEntries(database, TASK_TABLE_NAME);
+        return count;
+    }
+
+    private Task cursorToId(Cursor c){
+
+        c.moveToFirst();
+        Task task = new Task();
+        task.setId(c.getInt(NUM_TASK_COL_ID));
+        task.setNom(c.getString(NUM_TASK_COL_NOM));
+        task.setDate(c.getString(NUM_TASK_COL_DATE));
+        task.setRepetition(c.getString(NUM_TASK_COL_REPETITION));
+        task.setEffectue(c.getString(NUM_TASK_COL_EFFECTUE));
+
+        return task;
+
+    }
+
 
    private Task cursorToTask(Cursor c){
         if(c.getCount() == 0) {
@@ -86,58 +143,4 @@ public class TaskDAO  {
         return task;
    }
 
-/*
-    public Task createTask(String nom, String date, String repetition, String effectue){
-        ContentValues values = new ContentValues();
-        values.put(SQLiteHelper.TASK_COL_NOM, nom);
-        values.put(SQLiteHelper.TASK_COL_DATE, date);
-        values.put(SQLiteHelper.TASK_COL_REPETITION, repetition);
-        values.put(SQLiteHelper.TASK_COL_EFFECTUE, effectue);
-        long insertID = database.insert(SQLiteHelper.TASK_TABLE_NAME, null, values);
-        Cursor cursor = database.query(SQLiteHelper.TASK_TABLE_NAME,allColumns,SQLiteHelper.TASK_COL_ID + " = " + insertID, null,null,null,null);
-        cursor.moveToFirst();
-        Task newTask = cursorToTask(cursor);
-        cursor.close();
-        return newTask;
-    }
-    private Task cursorToTask(Cursor cursor) {
-        Task task = new Task();
-        task.setId(cursor.getLong(0));
-        task.setNom(cursor.getString(1));
-        task.setDate(cursor.getString(2));
-        task.setRepetition(cursor.getString(3));
-        task.setEffectue(cursor.getString(4));
-        return task;
-    }
-
-    public List<Task> getAllTasks() {
-        List<Task> tasksList = new ArrayList<Task>();
-
-        Cursor cursor = database.query(SQLiteHelper.TASK_TABLE_NAME,
-                allColumns, null, null, null, null, null);
-
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            Task task = cursorToTask(cursor);
-            tasksList.add(task);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return tasksList;
-    }
-
-    public void deleteTask (Task task){
-        long id = task.getId();
-        System.out.println("Task deleted with id: " + id);
-        database.delete(SQLiteHelper.TASK_TABLE_NAME, SQLiteHelper.TASK_COL_ID
-                + " = " + id, null);
-    }
-
-    public Task getFirstTask(){
-        Cursor cursor = database.query(SQLiteHelper.TASK_TABLE_NAME,allColumns,null,null,null,null,null);
-        cursor.moveToFirst();
-        Task task =  cursorToTask(cursor);
-        cursor.close();
-        return task;
-    }*/
 }

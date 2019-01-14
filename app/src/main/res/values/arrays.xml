@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="arrayChoixRepetition">
+        <item>Une fois par heure</item>
         <item>Une fois par jour</item>
-        <item>Une fois par jour (lundi-vendredi)</item>
         <item>Une fois par semaine</item>
-        <item>Une fois par mois</item>
-        <item>Une fois par an</item>
-        <item>Autre...</item>
+        <item>Pas de repetition</item>
     </string-array>
 
     <string-array name="arrayListesTaches">
@@ -15,4 +13,9 @@
         <item>Liste C</item>
     </string-array>
 
+    <string-array name="fruits">
+        <item>pomme A</item>
+        <item>banane B</item>
+        <item>Liste C</item>
+    </string-array>
 </resources>

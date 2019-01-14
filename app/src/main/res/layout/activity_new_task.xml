@@ -28,7 +28,7 @@
                 android:paddingRight="8dp"
                 android:paddingStart="10dp"
                 android:text="@string/text_view_tache"
-                android:textColor="#413bd6"
+                android:textColor="#d63b57"
                 android:textSize="18sp" />
 
             <EditText
@@ -51,7 +51,7 @@
                 android:paddingRight="8dp"
                 android:paddingStart="10dp"
                 android:text="@string/text_view_date"
-                android:textColor="#413bd6"
+                android:textColor="#d63b57"
                 android:textSize="18sp" />
 
             <EditText
@@ -87,7 +87,7 @@
                 android:paddingRight="8dp"
                 android:paddingStart="10dp"
                 android:text="@string/text_view_repetition"
-                android:textColor="#413bd6"
+                android:textColor="#d63b57"
                 android:textSize="18sp" />
 
 
@@ -104,51 +104,60 @@
                 android:textColorHint="#ccc9c9"
                 android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/text_view_listeID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingEnd="8dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="8dp"
-                android:paddingStart="10dp"
-                android:text="@string/text_view_liste"
-                android:textColor="#413bd6"
-                android:textSize="18sp" />
-
-
-            <EditText
-                android:id="@+id/listeID"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:focusable="false"
-                android:hint="@string/edit_view_liste"
-                android:inputType="text"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColorHint="#ccc9c9"
-                android:textSize="22sp" />
 
             <Button
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:id="@+id/newTaskSubmitID"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:hint="@string/newTaskSubmit"
-                android:inputType="text"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:textColorHint="#ccc9c9"
+                android:textColorHint="#ffffff"
                 android:textSize="22sp" />
 
             <Button
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:id="@+id/lancerGoogleActivityID"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:hint="Demarrer Google"
-                android:inputType="text"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:textColorHint="#ccc9c9"
+                android:textColorHint="#ffffff"
+                android:textSize="22sp" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:id="@+id/sendEmailButton"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="@string/sendEmailButton"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColorHint="#ffffff"
+                android:textSize="22sp" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:id="@+id/modifierButton"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="@string/modifierButton"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColorHint="#ffffff"
+                android:textSize="22sp" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:id="@+id/suprimerButton"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="@string/supprimerButton"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColorHint="#ffffff"
                 android:textSize="22sp" />
 
 
